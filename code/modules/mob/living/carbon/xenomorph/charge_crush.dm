@@ -203,7 +203,7 @@
 					if(victim.stat == DEAD)
 						continue
 					if(victim.client)
-						shake_camera(victim, 1, 1)
+						shake_camera(victim, 1, min(1, 1 - ((get_dist(charger, victim) - 1) / shake_dist))) //Shake intensity based on distance
 					if(victim.loc != charger.loc || !victim.lying_angle || isnestedhost(victim))
 						continue
 					charger.visible_message("<span class='danger'>[charger] runs [victim] over!</span>",
